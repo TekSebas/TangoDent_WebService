@@ -5,6 +5,8 @@
  */
 package citas;
 
+import citas.pojos.Cita;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -13,6 +15,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -38,8 +41,10 @@ public class CitasResource {
     @GET
     @Path("prueba")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getXml() {
-        //TODO return proper representation object
+    public Response getAllCitas() {
+       
+        List<Cita> citas=CicloBD.getAllCitas;
+        
         return "Funciona";
     }
 
