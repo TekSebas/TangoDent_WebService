@@ -16,21 +16,18 @@ import java.util.logging.Logger;
  * @author jsschuller
  */
 public class ConexionBD {
-    
-    public static final String URL="mysql:mysql://localhost/tangodentbd";
-    public static final String USER="root";
-    public static final String PASSWORD="";
-    public static Connection getConnection() {
+
+    public static final String URL = "jdbc:mysql://localhost/tangodentbd";
+    public static final String USER = "root";
+    public static final String PASSWORD = "";
+
+    public static Connection getConnection() throws Exception {
         Connection con = null;
         try {
-            Class.forName("com.sql.mysql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(URL, USER, PASSWORD);
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            throw (ex);
         }
         return con;
     }

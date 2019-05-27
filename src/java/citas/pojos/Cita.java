@@ -17,8 +17,8 @@ public class Cita {
     int id;
     String nombreServicio;
     Date fecha;
-    Long horaInicio;
-    Long horaFin;
+    String horaInicio;
+    String horaFin;
     String duracion;
     String nombrePaciente;
     String dni;
@@ -27,7 +27,7 @@ public class Cita {
     String ciudad;
     String direccion;
 
-    public Cita(int id, String nombreServicio, Date fecha, Long horaInicio, Long horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
+    public Cita(int id, String nombreServicio, Date fecha, String horaInicio, String horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
         this.id = id;
         this.nombreServicio = nombreServicio;
         this.fecha = fecha;
@@ -45,7 +45,7 @@ public class Cita {
     public Cita() {
     }
 
-    public Cita(String nombreServicio, Date fecha, Long horaInicio, Long horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
+    public Cita(String nombreServicio, Date fecha, String horaInicio, String horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
         this.nombreServicio = nombreServicio;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
@@ -85,19 +85,19 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    public Long getHoraInicio() {
+    public String getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Long horaInicio) {
+    public void setHoraInicio(String horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Long getHoraFin() {
+    public String getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Long horaFin) {
+    public void setHoraFin(String horaFin) {
         this.horaFin = horaFin;
     }
 
