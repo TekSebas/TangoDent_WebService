@@ -66,14 +66,13 @@ public class CitasResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCita(Cita registro){
         try {
-          
             CitaBD.addCita(registro);
             Date fecha= new Date();
             System.out.println(fecha+": Se ha añadido - addCita" + registro.getId());
             String json = "{ \"id\": \""+ String.valueOf(registro.getId())+"\" }";
             return Response.ok(json, MediaType.APPLICATION_JSON).build();
         } catch (Exception e) {
-            return Response.status(Response.Status.SEE_OTHER).entity("No se pudo insertar la cita: "+ registro.getId()).build();
+            return Response.status(Response.Status.SEE_OTHER).entity("No se pudo insertar la cita: "+ registro.getId() +"---"+ e.getMessage()).build();
         }
         
         
@@ -116,7 +115,7 @@ public class CitasResource {
             CitaBD.deleteCita(id);
             Date fecha=new Date();
             System.out.println(fecha.toString()+": Se ha borrado - deleteCita" + id);
-            String json ="{ \"id\""+ id + "\"}";
+            String json ="{ \"id\": \""+ id + "\" }";
             return Response.ok(json, MediaType.APPLICATION_JSON).build();
         } catch (Exception e) {
             return Response.status(Response.Status.SEE_OTHER).entity("No se pudo borrar la cita "+ id).build(); 

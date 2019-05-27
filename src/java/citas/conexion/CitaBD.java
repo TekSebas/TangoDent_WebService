@@ -34,7 +34,7 @@ public class CitaBD {
             while (rs.next()) {
                 Cita cita = new Cita(
                         rs.getInt("idCita"), rs.getString("nombreServicio"),
-                        rs.getDate("fecha"), rs.getString("horaInicio"),
+                        rs.getString("fecha"), rs.getString("horaInicio"),
                         rs.getString("horaFin"), rs.getString("duracion"), rs.getString("nombrePaciente"),
                         rs.getString("dni"), rs.getString("email"), rs.getInt("telefono"),
                         rs.getString("direccion"), rs.getString("ciudad")
@@ -71,7 +71,7 @@ public class CitaBD {
                 Cita registro = new Cita();
                 registro.setId(rs.getInt("idCita"));
                 registro.setNombreServicio(rs.getString("nombreServicio"));
-                registro.setFecha(rs.getDate("fecha"));
+                registro.setFecha(rs.getString("fecha"));
                 registro.setHoraInicio(rs.getString("horaInicio"));
                 registro.setHoraFin(rs.getString("horaFin"));
                 registro.setDuracion(rs.getString("duracion"));
@@ -95,25 +95,25 @@ public class CitaBD {
         ResultSet rs = null;
         try {
             String str;
-            if(registro.getId() != -1){
-                str="INSERT INTO citas (idCita,nombreServicio,fecha,horaInicio,horaFin,duracion,nombrePaciente,dni,email,telefono,direccion,ciudad) VALUES ("+
-                        registro.getId()+",'"+registro.getNombreServicio()
-                        +",'"+registro.getFecha()+",'"+registro.getHoraInicio()
-                        +",'"+registro.getHoraFin()+",'"+registro.getDuracion()
-                        +",'"+registro.getNombrePaciente()+",'"+registro.getDni()
-                        +",'"+registro.getEmail()+",'"+registro.getTelefono()
-                        +",'"+registro.getDireccion()+",'"+registro.getCiudad()+"')";
-            }else{
+            //if(registro.getId() != -1){
+                str="INSERT INTO citas (nombreServicio,fecha,horaInicio,horaFin,duracion,nombrePaciente,dni,email,telefono,direccion,ciudad) VALUES ("+
+                        "'"+registro.getNombreServicio()
+                        +"','"+registro.getFecha()+"','"+registro.getHoraInicio()
+                        +"','"+registro.getHoraFin()+"','"+registro.getDuracion()
+                        +"','"+registro.getNombrePaciente()+"','"+registro.getDni()
+                        +"','"+registro.getEmail()+"','"+registro.getTelefono()
+                        +"','"+registro.getDireccion()+"','"+registro.getCiudad()+"')";
+            /*}else{
                 str="INSERT INTO citas (nombreServicio,fecha,horaInicio,horaFin,duracion,nombrePaciente,dni,email,telefono,direccion,ciudad) VALUES("+
                         registro.getNombreServicio()
-                        +",'"+registro.getFecha()+",'"+registro.getHoraInicio()
-                        +",'"+registro.getHoraFin()+",'"+registro.getDuracion()
-                        +",'"+registro.getNombrePaciente()+",'"+registro.getDni()
-                        +",'"+registro.getEmail()+",'"+registro.getTelefono()
-                        +",'"+registro.getDireccion()+",'"+registro.getCiudad()+"')";
-            }
+                        +"','"+registro.getFecha()+"','"+registro.getHoraInicio()
+                        +"','"+registro.getHoraFin()+"','"+registro.getDuracion()
+                        +"','"+registro.getNombrePaciente()+"','"+registro.getDni()
+                        +"','"+registro.getEmail()+"','"+registro.getTelefono()
+                        +"','"+registro.getDireccion()+"','"+registro.getCiudad()+"')";
+            }*/
             ps=con.prepareStatement(str);
-            ps.executeQuery();
+            ps.executeUpdate();
             
         } catch (Exception ex) {
             throw(ex);
@@ -137,7 +137,7 @@ public class CitaBD {
        ResultSet rs = null;
         try {
             ps=con.prepareStatement("DELETE FROM citas WHERE idCita = "+ id);
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (Exception ex) {
             throw(ex);
         }finally{

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Cita {
     int id;
     String nombreServicio;
-    Date fecha;
+    String fecha;
     String horaInicio;
     String horaFin;
     String duracion;
@@ -27,7 +27,7 @@ public class Cita {
     String ciudad;
     String direccion;
 
-    public Cita(int id, String nombreServicio, Date fecha, String horaInicio, String horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
+    public Cita(int id, String nombreServicio, String fecha, String horaInicio, String horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
         this.id = id;
         this.nombreServicio = nombreServicio;
         this.fecha = fecha;
@@ -45,7 +45,7 @@ public class Cita {
     public Cita() {
     }
 
-    public Cita(String nombreServicio, Date fecha, String horaInicio, String horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
+    public Cita(String nombreServicio, String fecha, String horaInicio, String horaFin, String duracion, String nombrePaciente, String dni, String email, int telefono, String ciudad, String direccion) {
         this.nombreServicio = nombreServicio;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
@@ -77,11 +77,11 @@ public class Cita {
         this.nombreServicio = nombreServicio;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
